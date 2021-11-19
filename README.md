@@ -14,8 +14,51 @@ attach the current one before deferring for processing.
 * Events are indexed by session, category, and timestamp for filtering.
 
 ### Trusted applications
-Each application will use credentials to talk to "Teh Eye":
+Each application will use credentials to talk to "The Eye":
 * "The Eye" will provide each application with their `client_id` and `secret_key`
 * Each application will be responsible for generating a JWT with their credentials
 and send it in the `Authentication` header as a `Bearer` token on every request.
 * "The Eye" will allow CORS from any source and only validate the JWT.
+
+## Development environment
+
+Prerequisites:
+    
+* Python >= 3.7
+
+Initialize a python virtual environment:
+
+```bash
+python3 -m venv venv
+source ./venv/bin/activate
+```
+
+Install the project dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run DB migrations:
+
+```bash
+python manage.py migrate
+```
+
+Run the project:
+
+```bash
+python manage.py runserver
+```
+
+Run Redis server for the Celery broker
+
+```bash
+docker run -d -p 6379:6379 redis:latest
+```
+
+Run a celery worker
+
+```bash
+celery -A the_eye worker
+```
