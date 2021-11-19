@@ -6,3 +6,6 @@ DATABASES = {
         'NAME': ':memory:',
     }
 }
+
+
+CELERY_TASK_ALWAYS_EAGER = True

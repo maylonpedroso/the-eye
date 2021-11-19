@@ -5,7 +5,3 @@ exclude =
   the_eye/settings/*
   **/migrations/*
   venv/
-
-per-file-ignores =
-  app/sweeps.py:E501
-  scripts/*.py:E402

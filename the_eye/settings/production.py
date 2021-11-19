@@ -37,3 +37,8 @@ DATABASES = {
         },
     }
 }
+
+try:
+    CELERY_BROKER_URL = os.environ["CELERY_BROKER_URL"]
+except KeyError:
+    raise ImproperlyConfigured("Celery configuration missing from the environment")
