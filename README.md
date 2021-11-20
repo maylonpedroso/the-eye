@@ -87,3 +87,20 @@ Expected token payload:
 ```
 The token signature uses `HS256` encryption with the credentials `secret_key`
 as encryption key.
+
+### Run with docker
+
+Build the docker image
+```bash
+docker build . -t the-eye
+```
+
+Run the WSGI server
+```bash
+docker run -p 8000:8000 the_eye
+```
+
+Run the celery worker
+```bash
+docker run the-eye celery -A the_eye worker
+```
