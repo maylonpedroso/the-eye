@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.status import HTTP_202_ACCEPTED
 from rest_framework.viewsets import GenericViewSet
@@ -10,6 +11,7 @@ from .tasks import create_event
 
 class EventsViewSet(GenericViewSet):
     serializer_class = EventSerializer
+    permission_classes = [IsAuthenticated]
 
     def create(self, request, *args, **kwargs):
         # The only processing done synchronously is attaching the timestamp
