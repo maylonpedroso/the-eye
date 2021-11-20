@@ -5,6 +5,10 @@ djangorestframework-simplejwt
 pyjwt
 cryptography
 
+whitenoise
+
+psycopg2-binary
+
 celery
 redis
 hiredis
