@@ -1,6 +1,9 @@
 Django
 djangorestframework
 django-cors-headers
+djangorestframework-simplejwt
+pyjwt
+cryptography
 
 celery
 redis

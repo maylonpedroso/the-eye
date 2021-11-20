@@ -62,3 +62,28 @@ Run a celery worker
 ```bash
 celery -A the_eye worker
 ```
+
+### Generate client credentials and API access token
+
+Create a django admin superuser
+```bash
+python manage.py createsuperuser
+```
+
+Then go to the django admin and create a Client Credential
+and copy the generated `client_id` and `secret_key`.
+
+Using that credential any client can generate a valid JWT to communicate
+with the API using a Bearer token.
+Expected token payload:
+```json
+{
+  "jti": "[UNIQUE TOKEN ID]",
+  "gty": "client-credentials",
+  "sub": "[CLIENT_ID]",
+  "iat": 1516239022,
+  "exp": 1516249032
+}
+```
+The token signature uses `HS256` encryption with the credentials `secret_key`
+as encryption key.

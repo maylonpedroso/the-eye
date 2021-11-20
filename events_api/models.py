@@ -25,3 +25,9 @@ class Event(models.Model):
             models.Index(fields=['category'], name='category_idx'),
             models.Index(fields=['timestamp'], name='timestamp_idx'),
         ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['session_id', 'category', 'name', 'timestamp'],
+                name='events_unique',
+            )
+        ]
